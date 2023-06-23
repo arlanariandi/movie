@@ -17,8 +17,17 @@
         <!-- Movie Card -->
         <div v-for="movie in movies.slice(0, limit)" :key="movie.id" class="bg-white shadow-md rounded-lg p-4">
           <img :src="getImageUrl(movie.poster_path)" alt="Movie Poster" class="w-full rounded-lg mb-2">
-          <h3 class="text-lg font-semibold mb-1">{{ movie.title }}</h3>
-          <p class="text-gray-600">{{ movie.release_date }}</p>
+          <h3 class="text-lg font-semibold mb-1">{{ movie.title.slice(0, 20) }} <span
+              v-if="movie.title.length > 20">...</span>
+          </h3>
+          <p class="text-gray-600">Released:
+            {{ new Date(movie.release_date).toLocaleString('en-us', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric',
+            })
+            }}
+          </p>
         </div>
       </div>
     </main>
@@ -32,7 +41,7 @@ export default {
   data() {
     return {
       movies: [],
-      limit: 10,
+      limit: 12,
     };
   },
   mounted() {
