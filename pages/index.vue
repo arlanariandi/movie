@@ -16,7 +16,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <!-- Movie Card -->
-        <div v-for="movie in movies.slice(0, limit)" :key="movie.id" class="bg-white shadow-md rounded-lg p-4">
+        <div v-for="movie in movies.slice(0, limit)" :key="movie.id" class="bg-white rounded-lg p-4">
           <div class="group relative overflow-hidden">
             <img :src="getImageUrl(movie.poster_path)" alt="Movie Poster" class="w-full rounded-lg">
             <p
@@ -30,10 +30,8 @@
             </p>
           </div>
 
-
-
-          <h3 class="text-lg font-semibold mt-2 mb-1">{{ movie.title.slice(0, 20) }}
-            <span v-if="movie.title.length > 20">...</span>
+          <h3 class="text-lg font-semibold mt-2 mb-1">{{ movie.title.slice(0, 40) }}
+            <span v-if="movie.title.length > 40">...</span>
           </h3>
 
           <p class="text-gray-600">
