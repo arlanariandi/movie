@@ -51,7 +51,10 @@ export default {
   },
 
   env: {
-    TMDB_API_URL: process.env.TMDB_API_URL || 'default_value'
+    TEST: process.env.TEST,
+    TMDB_API_URL: process.env.TMDB_API_URL,
+    TMDB_API_KEY: process.env.TMDB_API_KEY,
+    TMDB_ACCESS_TOKEN: process.env.TMDB_ACCESS_TOKEN,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
