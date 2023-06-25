@@ -66,7 +66,8 @@ export default {
   methods: {
     async fetchMovies() {
       try {
-        const response = await axios.get(`${process.env.TMDB_API_URL}/movie/popular`, {
+        const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
+          // const response = await axios.get(`${process.env.TMDB_API_URL}/movie/popular`, {
           params: {
             api_key: process.env.TMDB_API_KEY
           }

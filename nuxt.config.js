@@ -50,6 +50,10 @@ export default {
     baseURL: 'https://api.themoviedb.org/3',
   },
 
+  env: {
+    TMDB_API_URL: process.env.TMDB_API_URL || 'default_value'
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
