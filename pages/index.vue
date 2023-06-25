@@ -58,17 +58,15 @@ export default {
       movies: []
     };
   },
-
   async mounted() {
     try {
-      const response = await fetch(`${process.env.TMDB_API_URLs}/movie/popular?api_key=${process.env.TMDB_API_KEY}`);
+      const response = await fetch(`${process.env.TMDB_API_URL}/movie/popular?api_key=${process.env.TMDB_API_KEY}`);
       const data = await response.json();
       this.movies = data.results;
     } catch (error) {
       console.error('Error fetching movie data:', error);
     }
   },
-
   methods: {
     getImageUrl(posterPath) {
       if (!posterPath) {
