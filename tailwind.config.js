@@ -12,9 +12,7 @@ module.exports = {
       poppins: 'Poppins, sans-serif'
     },
     extend: {
-      colors: {
-        'primary': '#1F1D2B',
-      }
+      colors: {}
     },
   },
   plugins: [],
