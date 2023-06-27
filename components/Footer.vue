@@ -106,18 +106,18 @@
               </p>
             </div>
 
-            <div class="text-xl md:col-span-4 lg:col-span-2">
-              <div class="mb-4 font-bold text-gray-300">Payments</div>
+            <div class="mt-8 md:col-span-4 lg:col-span-2 lg:mt-0">
+              <div class="mb-4 text-lg font-bold text-gray-300">The Basics</div>
               <div class="mb-4">
-                <a href="" class="font-normal text-gray-300"> Collections </a>
+                <a href="" class="font-normal text-gray-300"> About Us </a>
               </div>
               <div class="mb-4">
-                <a href="" class="font-normal text-gray-300"> Conversions </a>
+                <a href="" class="font-normal text-gray-300"> Contact Us </a>
               </div>
             </div>
 
-            <div class="text-xl md:col-span-4 lg:col-span-2">
-              <div class="mb-4 font-bold text-gray-300">Resources</div>
+            <div class="mt-8 md:col-span-4 lg:col-span-2 lg:mt-0">
+              <div class="mb-4 text-lg font-bold text-gray-300">Resources</div>
               <div class="mb-4">
                 <a href="" class="font-normal text-gray-300"> Blog </a>
               </div>
@@ -129,8 +129,10 @@
               </div>
             </div>
 
-            <div class="text-xl md:col-span-4 lg:col-span-2">
-              <div class="mb-4 font-bold text-gray-300">Our Company</div>
+            <div class="mt-8 md:col-span-4 lg:col-span-2 lg:mt-0">
+              <div class="mb-4 text-lg font-bold text-gray-300">
+                Our Company
+              </div>
               <div class="mb-4">
                 <a href="" class="font-normal text-gray-300"> About Us </a>
               </div>
