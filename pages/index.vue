@@ -24,9 +24,9 @@
     </div>
 
     <div v-if="loading" class="text-center">Loading...</div>
-    <!-- <div v-else-if="movies.length === 0" class="text-center">
-      No movies found.
-    </div> -->
+    <div v-else-if="movies.length === 0" class="text-center">
+      There are no movies that matched your query.
+    </div>
     <div v-else>
       <div class="grid gap-4">
         <MovieSearch v-for="movie in movies" :key="movie.id" :movie="movie" />
