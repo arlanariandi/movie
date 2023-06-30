@@ -82,18 +82,18 @@
               >
                 Popular
               </NuxtLink>
-              <a
-                href="#"
+              <NuxtLink
+                :to="{ name: 'movies-nowplaying' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Now Playing
-              </a>
-              <a
-                href="#"
+              </NuxtLink>
+              <NuxtLink
+                :to="{ name: 'movies-upcoming' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Upcoming
-              </a>
+              </NuxtLink>
               <NuxtLink
                 :to="{ name: 'movies-toprated' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"

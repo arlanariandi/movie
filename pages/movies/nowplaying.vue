@@ -1,7 +1,7 @@
 <template>
   <div>
     <main class="container mx-auto my-8 p-4 lg:p-0">
-      <h2 class="mb-4 text-2xl font-bold">Popular Movies</h2>
+      <h2 class="mb-4 text-2xl font-bold">Now Playing Movies</h2>
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
       >
@@ -20,10 +20,10 @@ export default {
     }
   },
   async mounted() {
-    // Fetch popular movies
+    // Fetch top rated movies
     try {
       const response = await fetch(
-        `${process.env.TMDB_API_URL}/movie/popular?api_key=${process.env.TMDB_API_KEY}`
+        `${process.env.TMDB_API_URL}/movie/now_playing?api_key=${process.env.TMDB_API_KEY}`
       )
       const data = await response.json()
       this.movies = data.results

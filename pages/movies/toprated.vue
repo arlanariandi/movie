@@ -5,11 +5,7 @@
       <div
         class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
       >
-        <MovieGrid
-          v-for="movie in topRatedMovies"
-          :key="movie.id"
-          :movie="movie"
-        />
+        <MovieGrid v-for="movie in movies" :key="movie.id" :movie="movie" />
       </div>
     </main>
   </div>
@@ -20,7 +16,7 @@ export default {
   layout: 'dashboard',
   data() {
     return {
-      topRatedMovies: [],
+      movies: [],
     }
   },
   async mounted() {
@@ -30,7 +26,7 @@ export default {
         `${process.env.TMDB_API_URL}/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
       )
       const data = await response.json()
-      this.topRatedMovies = data.results
+      this.movies = data.results
     } catch (error) {
       console.error('Error fetching popular movies data:', error)
     }
