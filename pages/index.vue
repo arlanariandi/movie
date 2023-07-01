@@ -23,6 +23,7 @@
       </button>
     </div>
 
+    <!-- List search movies -->
     <div v-if="loading" class="text-center">Loading...</div>
     <div v-else-if="movies.length === 0 && searchPerformed" class="text-center">
       There are no movies that matched your query.
@@ -33,23 +34,25 @@
       </div>
     </div>
 
-    <!-- Popular Movies -->
-    <h2 class="mb-4 mt-12 text-2xl font-bold">Popular Movies</h2>
-    <div class="mb-10 flex flex-nowrap overflow-x-auto">
-      <MovieCard
-        v-for="movie in popularMovies"
-        :key="movie.id"
-        :movie="movie"
-      />
-    </div>
-    <!-- Top Rated Movies -->
-    <h2 class="mb-4 text-2xl font-bold">Top Rated Movies</h2>
-    <div class="mb-10 flex flex-nowrap overflow-x-auto">
-      <MovieCard
-        v-for="movie in topRatedMovies"
-        :key="movie.id"
-        :movie="movie"
-      />
+    <div v-if="!searchPerformed">
+      <!-- Popular Movies -->
+      <h2 class="mb-4 text-2xl font-bold">Popular Movies</h2>
+      <div class="mb-10 flex flex-nowrap overflow-x-auto">
+        <MovieCard
+          v-for="movie in popularMovies"
+          :key="movie.id"
+          :movie="movie"
+        />
+      </div>
+      <!-- Top Rated Movies -->
+      <h2 class="mb-4 text-2xl font-bold">Top Rated Movies</h2>
+      <div class="mb-10 flex flex-nowrap overflow-x-auto">
+        <MovieCard
+          v-for="movie in topRatedMovies"
+          :key="movie.id"
+          :movie="movie"
+        />
+      </div>
     </div>
   </main>
 </template>
@@ -65,6 +68,7 @@ export default {
       topRatedMovies: [],
       loading: false,
       searchPerformed: false,
+      searchQuery: '',
     }
   },
 
@@ -96,6 +100,7 @@ export default {
     searchMovies() {
       this.loading = true
       this.searchPerformed = true
+      this.searchQuery = this.query
       this.movies = []
 
       this.$axios
@@ -108,6 +113,7 @@ export default {
         .then((response) => {
           this.loading = false
           this.movies = response.data.results
+          this.$router.push({ query: { search: this.searchQuery } })
         })
         .catch((error) => {
           console.error('Error:', error)
@@ -118,6 +124,8 @@ export default {
       this.query = ''
       this.movies = []
       this.searchPerformed = false
+      this.searchQuery = ''
+      this.$router.push({ query: {} })
     },
   },
 }
