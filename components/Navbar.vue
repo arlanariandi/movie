@@ -83,19 +83,19 @@
                 Popular
               </NuxtLink>
               <NuxtLink
-                :to="{ name: 'movies-nowplaying' }"
+                :to="{ name: 'movies-now-playing' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Now Playing
               </NuxtLink>
               <NuxtLink
-                :to="{ name: 'movies-upcoming' }"
+                :to="{ name: 'movies-up-coming' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Upcoming
               </NuxtLink>
               <NuxtLink
-                :to="{ name: 'movies-toprated' }"
+                :to="{ name: 'movies-top-rated' }"
                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Top Rated

@@ -24,7 +24,7 @@
     </div>
 
     <div v-if="loading" class="text-center">Loading...</div>
-    <div v-else-if="movies.length === 0" class="text-center">
+    <div v-else-if="movies.length === 0 && searchPerformed" class="text-center">
       There are no movies that matched your query.
     </div>
     <div v-else>
@@ -64,8 +64,10 @@ export default {
       popularMovies: [],
       topRatedMovies: [],
       loading: false,
+      searchPerformed: false,
     }
   },
+
   async mounted() {
     // Fetch popular movies
     try {
@@ -88,10 +90,12 @@ export default {
       console.error('Error fetching top rated movies data:', error)
     }
   },
+
   methods: {
     // Search Movies
     searchMovies() {
       this.loading = true
+      this.searchPerformed = true
       this.movies = []
 
       this.$axios
@@ -113,6 +117,7 @@ export default {
     resetSearch() {
       this.query = ''
       this.movies = []
+      this.searchPerformed = false
     },
   },
 }
