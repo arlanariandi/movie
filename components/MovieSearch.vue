@@ -1,12 +1,12 @@
 <template>
   <!-- Image -->
-  <div class="flex w-full rounded-lg border border-gray-300">
+  <div class="flex w-full rounded-lg border border-gray-300 hover:bg-gray-100">
     <img
       :src="getImageUrl(movie.poster_path)"
       :alt="movie.title"
       class="mr-4 h-36 w-24 rounded-l-lg object-cover"
     />
-    <div class="mt-4">
+    <div class="mt-2 lg:mt-4">
       <h2 class="text-lg font-bold">
         {{ movie.title }}
       </h2>
@@ -20,7 +20,7 @@
           })
         }}
       </p>
-      <p class="mt-4 text-gray-600">
+      <p class="mb-2 mt-4 text-gray-600">
         {{ movie.overview.slice(0, 350) }}
         <span v-if="movie.overview.length > 350">...</span>
       </p>
