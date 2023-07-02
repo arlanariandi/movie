@@ -23,7 +23,7 @@
       </button>
     </div>
 
-    <!-- List search movies -->
+    <!-- List results movie search -->
     <div v-if="loading" class="text-center">Loading...</div>
     <div v-else-if="movies.length === 0 && searchPerformed" class="text-center">
       There are no movies that matched your query.
@@ -113,7 +113,9 @@ export default {
         .then((response) => {
           this.loading = false
           this.movies = response.data.results
-          this.$router.push({ query: { search: this.searchQuery } })
+          this.$router.push({
+            query: { search: this.searchQuery },
+          })
         })
         .catch((error) => {
           console.error('Error:', error)

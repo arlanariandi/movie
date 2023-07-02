@@ -35,6 +35,16 @@
         })
       }}
     </p>
+
+    <router-link
+      :to="{
+        name: 'movies-id-title',
+        params: { id: movie.id, title: formatMovieTitle(movie.title) },
+      }"
+      @click="updateRouteParams(movie.id, movie.title)"
+    >
+      Detail
+    </router-link>
   </div>
 </template>
 
@@ -52,6 +62,24 @@ export default {
         return 'https://via.placeholder.com/300x450?text=No+Poster'
       }
       return `https://image.tmdb.org/t/p/w300${posterPath}`
+    },
+    // Fungsi untuk memformat judul film ke dalam bentuk yang valid untuk URL
+    formatMovieTitle(title) {
+      // Mengubah judul menjadi huruf kecil dan mengganti spasi dengan tanda strip
+      const formattedTitle = title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-')
+      // Mengkodekan judul film menggunakan encodeURIComponent agar aman untuk digunakan dalam URL
+      return encodeURIComponent(formattedTitle)
+    },
+    // Fungsi untuk memperbarui parameter rute dan URL saat sebuah film dipilih
+    updateRouteParams(id, title) {
+      // Mengformat judul film menjadi bentuk yang valid untuk URL
+      const formattedTitle = this.formatMovieTitle(title)
+      // Menggunakan $router.replace untuk mengganti URL dengan parameter baru
+      this.$router.replace({
+        name: 'movie-detail',
+        params: { id, title: formattedTitle },
+        query: this.$route.query,
+      })
     },
   },
 }
