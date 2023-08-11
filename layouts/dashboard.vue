@@ -1,8 +1,10 @@
 <template>
-  <div class="font-poppins">
+  <div class="flex h-screen flex-col font-poppins">
     <Navbar />
 
-    <Nuxt />
+    <div class="flex-grow">
+      <Nuxt />
+    </div>
 
     <Footer />
   </div>
