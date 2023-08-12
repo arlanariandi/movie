@@ -29,11 +29,11 @@
     </router-link>
     <!-- Title -->
     <h3 class="mb-1 mt-2 text-lg font-semibold">
-      {{ movie.title.slice(0, 23) }}
-      <span v-if="movie.title.length > 23">...</span>
+      {{ movie.title.slice(0, 18) }}
+      <span v-if="movie.title.length > 18">...</span>
     </h3>
     <!-- Released Date -->
-    <p class="text-gray-600">
+    <p class="text-slate-600">
       <span class="font-medium">Released:</span>
       {{
         new Date(movie.release_date).toLocaleString('en-us', {

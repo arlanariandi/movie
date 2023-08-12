@@ -6,7 +6,7 @@
           <!-- Mobile menu button-->
           <button
             type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-controls="mobile-menu"
             aria-expanded="false"
             data-collapse-toggle="mobile-menu"
@@ -72,31 +72,31 @@
             <div class="flex space-x-4">
               <NuxtLink
                 :to="{ name: 'index' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 Home
               </NuxtLink>
               <NuxtLink
                 :to="{ name: 'movies' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 Popular
               </NuxtLink>
               <NuxtLink
                 :to="{ name: 'movies-now-playing' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 Now Playing
               </NuxtLink>
               <NuxtLink
                 :to="{ name: 'movies-up-coming' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 Upcoming
               </NuxtLink>
               <NuxtLink
                 :to="{ name: 'movies-top-rated' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
               >
                 Top Rated
               </NuxtLink>
@@ -109,7 +109,7 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-slate-900 text-white", Default: "text-gray-300 hover:bg-slate-700 hover:text-white" -->
+        <!-- Current: "bg-slate-900 text-white", Default: "text-slate-300 hover:bg-slate-700 hover:text-white" -->
         <a
           href="#"
           class="block rounded-md bg-slate-900 px-3 py-2 text-base font-medium text-white"
@@ -118,17 +118,17 @@
         >
         <a
           href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
           >Team</a
         >
         <a
           href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
           >Projects</a
         >
         <a
           href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-slate-700 hover:text-white"
+          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
           >Calendar</a
         >
       </div>

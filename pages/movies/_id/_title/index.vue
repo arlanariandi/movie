@@ -19,50 +19,31 @@
                 }})
               </span>
             </h1>
-            <p class="mb-2 font-semibold text-gray-500">
-              Released:
-              <span class="font-light">
-                {{
-                  new Date(movie.release_date).toLocaleString('en-us', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric',
-                  })
-                }}
-              </span>
-            </p>
+
+            <div class="mb-2 flex-none lg:flex">
+              <p class="mr-1 font-light text-slate-500">
+                {{ formatDate(movie.release_date) }}
+              </p>
+              <p class="mr-1 font-light text-slate-500">
+                <span class="hidden font-semibold lg:inline">| </span
+                >{{ movieGenres }}
+              </p>
+              <p class="font-light text-slate-500">
+                <span class="hidden font-semibold lg:inline">| </span
+                >{{ formatDuration(movie.runtime) }}
+              </p>
+            </div>
+
             <p class="mb-6 text-gray-500">
               <span class="font-semibold">Vote Average:</span>
-              {{ movie.vote_average }}
+              {{ getVotePercentage(movie.vote_average) }}
             </p>
+            <p class="mb-2 italic text-gray-700">{{ movie.tagline }}</p>
             <p class="mb-2 text-xl font-semibold text-gray-700">Overview</p>
             <p class="text-gray-700">{{ movie.overview }}</p>
           </div>
         </div>
       </div>
-      <!-- <div class="mx-auto max-w-screen-lg px-4 py-8">
-        <h1 class="mb-4 text-2xl font-semibold">{{ movie.title }}</h1>
-        <div class="flex">
-          <img
-            :src="getImageUrl(movie.poster_path)"
-            alt="Movie Poster"
-            class="mr-4 w-48"
-          />
-          <div>
-            <p class="mb-2">
-              <span class="font-semibold">Release Date:</span>
-              {{ movie.release_date }}
-            </p>
-            <p class="mb-2">
-              <span class="font-semibold">Vote Average:</span>
-              {{ movie.vote_average }}
-            </p>
-            <p class="mb-2">
-              <span class="font-semibold">Overview:</span> {{ movie.overview }}
-            </p>
-          </div>
-        </div>
-      </div> -->
     </div>
     <div v-else>
       <p>Loading...</p>
@@ -96,6 +77,30 @@ export default {
         return 'https://via.placeholder.com/300x450?text=No+Poster'
       }
       return `https://image.tmdb.org/t/p/w300${posterPath}`
+    },
+    getVotePercentage(voteAverage) {
+      return (voteAverage * 10).toFixed(0) + '%'
+    },
+    formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      const date = new Date(dateString)
+      // format indonesia
+      // return date.toLocaleDateString('id-ID', options)
+      // format english
+      return date.toLocaleDateString('en-US', options)
+    },
+    formatDuration(minutes) {
+      const hours = Math.floor(minutes / 60)
+      const remainingMinutes = minutes % 60
+      return `${hours}h ${remainingMinutes}m`
+    },
+  },
+  computed: {
+    movieGenres() {
+      if (this.movie.genres) {
+        return this.movie.genres.map((genre) => genre.name).join(', ')
+      }
+      return 'Genre tidak tersedia'
     },
   },
 }
