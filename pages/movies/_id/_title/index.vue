@@ -53,6 +53,35 @@
           </div>
         </div>
       </div>
+
+      <div class="mx-auto max-w-screen-lg px-4 py-8">
+        <h2 class="text-xl font-semibold text-slate-800">Top Billed Cast</h2>
+        <div class="mb-10 flex flex-nowrap overflow-x-auto">
+          <div
+            v-for="cast in limitedCast"
+            :key="cast.id"
+            class="flex-none pb-4 pr-4 pt-4"
+          >
+            <div class="w-32 bg-white">
+              <img
+                v-if="cast.profile_path"
+                :src="getProfileImageUrl(cast.profile_path)"
+                :alt="cast.name"
+                class="w-32 rounded-t-lg"
+              />
+
+              <div class="pb-6 pt-2">
+                <h3 class="text-sm font-semibold tracking-tight text-slate-800">
+                  {{ cast.name }}
+                </h3>
+                <p class="text-sm font-light text-slate-600">
+                  {{ cast.character }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-else>
       <p>Loading...</p>
@@ -65,13 +94,18 @@ export default {
   layout: 'dashboard',
   async asyncData({ params, $axios }) {
     try {
-      const response = await $axios.get(`/movie/${params.id}`, {
-        params: {
-          api_key: `${process.env.TMDB_API_KEY}`,
-        },
-      })
+      const movieId = params.id
+      const apiKey = process.env.TMDB_API_KEY
+      // Pemanggilan API berdasarkan ID film dan Ambil data pemeran unggulan (cast) dari API
+      const [movieResponse, creditsResponse] = await Promise.all([
+        $axios.get(`/movie/${movieId}?api_key=${apiKey}`),
+        $axios.get(`/movie/${movieId}/credits?api_key=${apiKey}`),
+      ])
       return {
-        movie: response.data,
+        movie: {
+          ...movieResponse.data,
+          credits: creditsResponse.data,
+        },
       }
     } catch (error) {
       console.error('Error:', error)
@@ -92,6 +126,9 @@ export default {
         return 'https://via.placeholder.com/1080x500?text=No+Poster'
       }
       return `url('https://image.tmdb.org/t/p/original${backdropPath}')`
+    },
+    getProfileImageUrl(profilePath) {
+      return `https://image.tmdb.org/t/p/w276_and_h350_face${profilePath}`
     },
     getVotePercentage(voteAverage) {
       return (voteAverage * 10).toFixed(0) + '%'
@@ -116,6 +153,10 @@ export default {
         return this.movie.genres.map((genre) => genre.name).join(', ')
       }
       return 'Genre tidak tersedia'
+    },
+    limitedCast() {
+      // Batasi jumlah pemeran yang ditampilkan, misalnya 10
+      return this.movie.credits.cast.slice(0, 10)
     },
   },
 }
