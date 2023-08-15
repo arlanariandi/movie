@@ -39,7 +39,7 @@
       <h2 class="mb-4 text-2xl font-bold">Popular Movies</h2>
       <div class="mb-10 flex flex-nowrap overflow-x-auto">
         <MovieCard
-          v-for="movie in popularMovies"
+          v-for="movie in popularMovies.slice(0, 10)"
           :key="movie.id"
           :movie="movie"
         />
@@ -48,7 +48,7 @@
       <h2 class="mb-4 text-2xl font-bold">Top Rated Movies</h2>
       <div class="mb-10 flex flex-nowrap overflow-x-auto">
         <MovieCard
-          v-for="movie in topRatedMovies"
+          v-for="movie in topRatedMovies.slice(0, 10)"
           :key="movie.id"
           :movie="movie"
         />
