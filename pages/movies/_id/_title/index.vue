@@ -40,15 +40,25 @@
                 </p>
               </div>
 
-              <div class="mb-2 flex-none lg:flex">
-                <p class="mb-4 mr-8 text-slate-200">
+              <div class="mb-2 flex-none items-start lg:flex">
+                <p class="mb-4 mr-8 font-semibold text-slate-200">
                   {{ getVotePercentage(movie.vote_average) }}
-                  <span class="font-semibold">User Score:</span>
+                  <span class="font-light">User Score</span>
                 </p>
+                <!-- Tampilkan tombol "View Trailer" -->
                 <button
                   @click="openTrailerModal"
-                  class="rounded bg-yellow-500 px-4 py-2 font-semibold text-white hover:bg-yellow-600"
+                  class="flex items-center bg-transparent fill-slate-200 font-semibold text-slate-200 hover:fill-slate-500 hover:text-slate-500"
                 >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    class="mr-2"
+                  >
+                    <path d="M3 22v-20l18 10-18 10z" />
+                  </svg>
                   View Trailer
                 </button>
               </div>
@@ -91,30 +101,46 @@
           </div>
         </div>
       </div>
-      <!-- Tampilkan tombol "View Trailer" -->
-      <button
-        @click="openTrailerModal"
-        class="rounded bg-yellow-500 px-4 py-2 font-semibold text-white hover:bg-yellow-600"
-      >
-        View Trailer
-      </button>
 
       <!-- Tampilkan trailer dalam modal / popup -->
       <div
         v-if="showTrailerModal"
         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
       >
-        <div class="rounded bg-white p-4 shadow-lg">
-          <button
-            @click="closeTrailerModal"
-            class="absolute right-2 top-2 text-gray-500 hover:text-gray-700"
-          >
-            Close
-          </button>
-          <div class="responsive-container overflow-hidden">
+        <!-- Modal content -->
+        <div
+          class="relative h-auto w-full max-w-screen-2xl rounded-lg bg-slate-800"
+        >
+          <!-- Modal header -->
+          <div class="flex items-start justify-between rounded-t p-4">
+            <h3 class="text-xl font-semibold text-slate-200">Play Trailer</h3>
+            <button
+              @click="closeTrailerModal"
+              class="ml-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-slate-400 hover:bg-slate-600 hover:text-white"
+            >
+              <svg
+                class="h-3 w-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="space-y-6 p-3">
             <iframe
               width="100%"
-              height="400"
+              height="825"
               :src="getTrailerUrl(movie.trailer.key)"
               frameborder="0"
               allowfullscreen
