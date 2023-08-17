@@ -1,137 +1,127 @@
 <template>
-  <nav class="bg-slate-800">
-    <div class="mx-auto max-w-full px-2 sm:px-6 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
-          <button
-            type="button"
-            class="inline-flex items-center justify-center rounded-md p-2 text-slate-400 hover:bg-slate-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            aria-controls="mobile-menu"
-            aria-expanded="false"
-            data-collapse-toggle="mobile-menu"
+  <nav class="bg-gray-800 p-4">
+    <div class="flex items-center justify-between px-2 lg:px-8">
+      <!-- Logo atau Judul -->
+      <div class="text-lg font-semibold text-white">
+        <img class="h-10 w-auto" src="/images/logo.png" alt="Movie Nuxt" />
+      </div>
+
+      <!-- Menu Toggle untuk Tampilan Mobile -->
+      <div class="md:hidden">
+        <button @click="toggleMenu" class="text-white">
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <span class="sr-only">Open main menu</span>
-            <!--
-            Icon when menu is closed.
-            Menu open: "hidden", Menu closed: "block"
-          -->
-            <svg
-              class="block h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-            <!--
-            Icon when menu is open.
-            Menu open: "block", Menu closed: "hidden"
-          -->
-            <svg
-              class="hidden h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
 
-        <div
-          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+      <!-- Menu untuk Tampilan Desktop -->
+      <div class="hidden md:flex md:items-center md:space-x-4">
+        <NuxtLink
+          :to="{ name: 'index' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
         >
-          <!-- Logo -->
-          <div class="flex flex-shrink-0 items-center">
-            <img
-              class="block h-10 w-auto lg:hidden"
-              src="/images/logo.png"
-              alt="Your Company"
-            />
-            <img
-              class="hidden h-10 w-auto lg:block"
-              src="/images/logo.png"
-              alt="Your Company"
-            />
-          </div>
-
-          <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-              <NuxtLink
-                :to="{ name: 'index' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-              >
-                Home
-              </NuxtLink>
-              <NuxtLink
-                :to="{ name: 'movies' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-              >
-                Popular
-              </NuxtLink>
-              <NuxtLink
-                :to="{ name: 'movies-now-playing' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-              >
-                Now Playing
-              </NuxtLink>
-              <NuxtLink
-                :to="{ name: 'movies-up-coming' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-              >
-                Upcoming
-              </NuxtLink>
-              <NuxtLink
-                :to="{ name: 'movies-top-rated' }"
-                class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-              >
-                Top Rated
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
+          Home
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'movies' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
+        >
+          Popular
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'movies-now-playing' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
+        >
+          Now Playing
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'movies-up-coming' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
+        >
+          Upcoming
+        </NuxtLink>
+        <NuxtLink
+          :to="{ name: 'movies-top-rated' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
+        >
+          Top Rated
+        </NuxtLink>
       </div>
     </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2">
-        <!-- Current: "bg-slate-900 text-white", Default: "text-slate-300 hover:bg-slate-700 hover:text-white" -->
-        <a
-          href="#"
-          class="block rounded-md bg-slate-900 px-3 py-2 text-base font-medium text-white"
-          aria-current="page"
-          >Dashboard</a
+    <!-- Menu untuk Tampilan Mobile -->
+    <ul v-if="menuOpen" class="mt-4 md:hidden">
+      <li class="flex">
+        <NuxtLink
+          :to="{ name: 'index' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
         >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-          >Team</a
+          Home
+        </NuxtLink>
+      </li>
+      <li class="flex">
+        <NuxtLink
+          :to="{ name: 'movies' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
         >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-          >Projects</a
+          Popular
+        </NuxtLink>
+      </li>
+      <li class="flex">
+        <NuxtLink
+          :to="{ name: 'movies-now-playing' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
         >
-        <a
-          href="#"
-          class="block rounded-md px-3 py-2 text-base font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
-          >Calendar</a
+          Now Playing
+        </NuxtLink>
+      </li>
+      <li class="flex">
+        <NuxtLink
+          :to="{ name: 'movies-up-coming' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
         >
-      </div>
-    </div>
+          Upcoming
+        </NuxtLink>
+      </li>
+      <li class="flex">
+        <NuxtLink
+          :to="{ name: 'movies-top-rated' }"
+          class="rounded-md px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white"
+        >
+          Top Rated
+        </NuxtLink>
+      </li>
+    </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      menuOpen: false,
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen
+    },
+  },
+}
+</script>
+
+<style scoped>
+/* Gaya lainnya */
+</style>
